@@ -1,6 +1,6 @@
 import unittest
-from torchsummary import summary, summary_string
-from torchsummary.tests.test_models.test_model import SingleInputNet, MultipleInputNet, MultipleInputNetDifferentDtypes
+from torchsummary_mod import summary, summary_string
+from torchsummary_mod.tests.test_models.test_model import SingleInputNet, MultipleInputNet, MultipleInputNetDifferentDtypes
 import torch
 
 gpu_if_available = "cuda:0" if torch.cuda.is_available() else "cpu"
