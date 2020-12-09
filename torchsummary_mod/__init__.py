@@ -1,1 +1,1 @@
-from .torchsummary import summary, summary_string
+from .torchsummary_mod import summary, summary_string
