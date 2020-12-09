@@ -99,10 +99,10 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
 
     # assume 4 bytes/number (float on cuda).
     total_input_size = abs(np.prod(sum(input_size, ()))
-                           * batch_size * 4. / (1024 ** 2.))
+                           * batch_size * 4. / (1024 )) # represent in KB
     total_output_size = abs(2. * total_output * 4. /
-                            (1024 ** 2.))  # x2 for gradients
-    total_params_size = abs(total_params * 4. / (1024 ** 2.))
+                            (1024 ))  # x2 for gradients # represent in KB
+    total_params_size = abs(total_params * 4. / (1024 )) # represent in KB
     total_size = total_params_size + total_output_size + total_input_size
 
     summary_str += "================================================================" + "\n"
@@ -111,10 +111,10 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
     summary_str += "Non-trainable params: {0:,}".format(total_params -
                                                         trainable_params) + "\n"
     summary_str += "----------------------------------------------------------------" + "\n"
-    summary_str += "Input size (MB): %0.2f" % total_input_size + "\n"
-    summary_str += "Forward/backward pass size (MB): %0.2f" % total_output_size + "\n"
-    summary_str += "Params size (MB): %0.2f" % total_params_size + "\n"
-    summary_str += "Estimated Total Size (MB): %0.2f" % total_size + "\n"
+    summary_str += "Input size (KB): %0.2f" % total_input_size + "\n"
+    summary_str += "Forward/backward pass size (KB): %0.2f" % total_output_size + "\n"
+    summary_str += "Params size (KB): %0.2f" % total_params_size + "\n"
+    summary_str += "Estimated Total Size (KB): %0.2f" % total_size + "\n"
     summary_str += "----------------------------------------------------------------" + "\n"
     # return summary
     return summary_str, (total_params, trainable_params)
